@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #include <vector>
 
@@ -22,3 +23,7 @@ public:
 
     ~Digraph          ();
 }
+=======
+//class for digraph
+
+>>>>>>> 807546245e143a4b76dd7ff5e2527142009f5084
