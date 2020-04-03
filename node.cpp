@@ -1,31 +1,26 @@
 
 #include "node.cpp"
 
-Node()
+Node::Node()
 {
     // Default Constructor
     m_value = "tmp";
     m_next  = nullptr;
 }
 
-Node(std::string value)
+Node::Node(std::string value)
 {
     m_value = value;
     m_next  = nullptr;
 }
 
-bool SetLabel(int label )
-{
-    m_label = label;
-    return true;
-}
-bool SetNext (Node* next)
+Node::bool SetNext (Node* next)
 {
     m_next = next;
     return true;
 }
 
-~Node()
+Node::~Node()
 {
 
 }
