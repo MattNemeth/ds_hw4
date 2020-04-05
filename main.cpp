@@ -2,7 +2,7 @@
 
 #include "digraph.h"
 #include <string>
-#include "iostream"
+#include <iostream>
 
 
 int main() {
