@@ -3,22 +3,25 @@
 #include "digraph.h"
 #include <string>
 #include <iostream>
+#include <vector>
 
 
 int main() {
 
     std::cout << "Beginning of Assignment 4 program." << std::endl;
     std::cout << "Enter 1 when you have finished entering in all tasks." << std::endl;
+    std::cout << std::endl;
 
     std::string inputs[50]; //array of strings. max of 50 tasks
-    vector<std::string> tasks;
+    std::vector<std::string> tasks;
     std::string task;
     int taskCount = 0;
 
     while(1){
         std::cout << "Input a string for task " << taskCount << ": ";
         getline(std::cin, task);
-	tasks[taskCount] = task;
+	tasks.push_back(task);
+	//tasks[taskCount] = task;
         // std::cout << "You entered: " << task << std::endl;
 
 
