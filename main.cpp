@@ -1,12 +1,14 @@
 // main source code file
 
 #include "digraph.h"
+//#include "node.h"
 #include <string>
 #include <iostream>
 #include <vector>
 
 
 int main() {
+    Digraph* DAG = new Digraph();
 
     std::cout << "Beginning of Assignment 4 program." << std::endl;
     std::cout << "Enter 1 when you have finished entering in all tasks." << std::endl;
@@ -63,6 +65,22 @@ int main() {
 
 	    
 
+    }
+
+    std::cout << std::endl;
+
+    //sort the DAG
+    Node* current = DAG->Sort();
+
+    if(DAG->Cycles()){
+	std::cout << "Contains cycles. Not a DAG" << std::endl;
+    }
+    else {
+	std::cout << "Topological order of tasks: " << std::endl;
+	while(current != nullptr){
+		std::cout << current->GetValue() <<std::endl;
+		current = current->GetNext();
+	    }
     }
 
     return 0;

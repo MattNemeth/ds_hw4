@@ -37,6 +37,7 @@ bool Digraph::AddEdge(int v1, int v2)
         return false;
     }
 }
+
 bool Digraph::HasEdge(int v1, int v2)
 {
     if (CheckBounds(v1,v2))
@@ -45,6 +46,7 @@ bool Digraph::HasEdge(int v1, int v2)
     }
     return false;
 }
+
 bool Digraph::RemoveEdge(int v1, int v2)
 {
     if (CheckBounds(v1,v2))
@@ -59,7 +61,7 @@ bool Digraph::RemoveEdge(int v1, int v2)
         if (currNode->GetNext() == nullptr)
         {
             // Return False if the node has no edges.
-            return false
+            return false;
         }
         else
         {
@@ -82,7 +84,7 @@ bool Digraph::RemoveEdge(int v1, int v2)
             prevNode->SetNext(currNode->GetNext());
             currNode->SetNext(nullptr);
 
-            delete currNode
+            delete currNode;
         }
         return true;
     }
@@ -99,14 +101,14 @@ bool Digraph::AddVertex(std::string value)
     m_headers.push_back(vertex);
     return true;
 }
-bool  Digraph::SortUtil(map<std::string, int>*  overallVisits,
-                        map<std::string, bool>* cycleVisits,
+bool  Digraph::SortUtil(std::map<std::string, int>*  overallVisits,
+                        std::map<std::string, bool>* cycleVisits,
                         Node**                  head,
                         Node*                   v1
                        )
 {
-    (*overallVisits)[v1->GetValue()] = 1
-    (*cycleVisits  )[v1->GetValue()] = true
+    (*overallVisits)[v1->GetValue()] = 1;
+    (*cycleVisits  )[v1->GetValue()] = true;
 
     Node* nextEdge;
     Node* edge = v1;
@@ -131,7 +133,7 @@ bool  Digraph::SortUtil(map<std::string, int>*  overallVisits,
                 }
             }
         }
-        edge = nextEdge
+        edge = nextEdge;
     }
 
     // Remove v1 from the cycle visited map stack
@@ -147,19 +149,20 @@ bool  Digraph::SortUtil(map<std::string, int>*  overallVisits,
     {
         Node* prevNode = new Node(v1->GetValue());
         prevNode->SetNext(*head);
-        *head = prev;
+        *head = prevNode;
     }
 }
 Node* Digraph::Sort()
 {
-    map<std::string, int>  overallVisits;
-    map<std::string, bool> cycleVisits  ;
+    std::map<std::string, int>  overallVisits;
+    std::map<std::string, bool> cycleVisits  ;
 
     Node* m_head = nullptr;
 
     for (int i = 0; i < m_headers.size(); i++)
     {
-        overallVisits[m_headers.size()] = 0;
+       overallVisits[m_headers[i]->GetValue()] = 0;
+       //overallVisits[m_headers.size()] = 0;
     }
 
     for (int i = 0; i < m_headers.size(); i++)
@@ -167,12 +170,17 @@ Node* Digraph::Sort()
         std::string value = m_headers[i]->GetValue();
         if (overallVisits[value] == 0)
         {
-            cycleVisits.clear()
+            cycleVisits.clear();
             SortUtil(&overallVisits, &cycleVisits, &m_head, m_headers[i]);
         }
     }
     return m_head;
 }
+
+bool Digraph::Cycles(){
+	return m_hasCycle;
+}
+
 Digraph::~Digraph()
 {
     Node* currNode;

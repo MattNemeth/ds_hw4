@@ -11,7 +11,7 @@ private:
     bool          m_hasCycle;
 
 public:
-    Digraph           ();
+    Digraph();
 
     // v1 is the vertex the edge starts at & v2 is the vertex it goes to.
 
@@ -28,7 +28,8 @@ public:
     bool  HasEdge     (int v1, int v2   );
     bool  RemoveEdge  (int v1, int v2   );
     bool  AddVertex   (std::string value);
-    Node* Sort        (                 );
+    bool  Cycles      ();
+    Node* Sort        ();
 
     ~Digraph          ();
 };

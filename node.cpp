@@ -1,5 +1,5 @@
 
-#include "node.cpp"
+#include "node.h"
 
 Node::Node()
 {
@@ -14,7 +14,7 @@ Node::Node(std::string value)
     m_next  = nullptr;
 }
 
-Node::bool SetNext (Node* next)
+bool Node::SetNext (Node* next)
 {
     m_next = next;
     return true;
