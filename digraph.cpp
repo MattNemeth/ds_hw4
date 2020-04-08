@@ -38,15 +38,6 @@ bool Digraph::AddEdge(int v1, int v2)
     }
 }
 
-bool Digraph::HasEdge(int v1, int v2)
-{
-    if (CheckBounds(v1, v2))
-    {
-        return true;
-    }
-    return false;
-}
-
 bool Digraph::RemoveEdge(int v1, int v2)
 {
     if (CheckBounds(v1, v2))

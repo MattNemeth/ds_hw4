@@ -1,9 +1,7 @@
 // main source code file
 
 #include "digraph.h"
-#include <string>
 #include <iostream>
-#include <vector>
 
 
 int main() {
